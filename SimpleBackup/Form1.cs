@@ -13,12 +13,26 @@ namespace SimpleBackup
 {
     public partial class Form1 : Form
     {
-        public string[]  externalDiscName; 
+        public string[]  externalDiscName;
+        public bool isExternalDrive;
+        public DialogResult autoSelectTarget;
         
         public Form1()
         {
             InitializeComponent();
-            this.checkDrives();
+            isExternalDrive = checkDrives();
+
+            if (isExternalDrive)
+            {
+               autoSelectTarget = MessageBox.Show(
+                    "Wir haben erkannt, dass Sie ein Externes Speichermedium angeschlossen haben. \n Möchten Sie dieses automatisch als Speicherort auswählen ?",
+                    "Error", 
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+            }
+            Console.WriteLine("Drive {0}", autoSelectTarget);
+            
         }
 
         private void bnt_sDir_Click(object sender, EventArgs e)
@@ -33,8 +47,6 @@ namespace SimpleBackup
                 {
                     sDir = fbd.SelectedPath;
                     var files = Directory.GetFiles(fbd.SelectedPath);
-                    
-                    // System.Windows.Forms.MessageBox.Show("Files found: " + files.Length.ToString(), "Message");
                 }
                 
                 this.txt_sDir_out.Text = sDir;
@@ -52,8 +64,6 @@ namespace SimpleBackup
                 {
                     tDir = fbd.SelectedPath;
                     var files = Directory.GetFiles(fbd.SelectedPath);
-                    
-                    // System.Windows.Forms.MessageBox.Show("Files found: " + files.Length.ToString(), "Message");
                 }
                 
                 this.txt_tDir_cp.Text = tDir;
@@ -95,21 +105,27 @@ namespace SimpleBackup
             }
         }
 
-        private void checkDrives()
+        private bool checkDrives()
         {
             DriveInfo[] allDrives = DriveInfo.GetDrives();
-            int i = 0;
+            var i = 0;
+            var isPresent = false;
+            string[] extDrive = new string[10] ;
             
             foreach (DriveInfo d in allDrives)
             {
                 if (d.DriveType.ToString() == "Removable")
                 {
-                    this.externalDiscName[i] = d.Name;
+                    extDrive[i] = d.Name;
+                    isPresent = true;
                     i++;
                 }
-                
-                Console.WriteLine("Drive {0}, Type {1}", d.Name, d.DriveType);
             }
+
+            if (isPresent)
+                this.externalDiscName = extDrive;
+
+            return isPresent;
         }
     }
 }
