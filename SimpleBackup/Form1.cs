@@ -30,7 +30,11 @@ namespace SimpleBackup
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question
                 );
-               txt_tDir_cp.Text = 
+               
+               if (autoSelectTarget == DialogResult.Yes)
+                   txt_tDir_cp.Text = externalDiscName;
+               
+               
             }
             Console.WriteLine("Drive {0}", autoSelectTarget);
             
