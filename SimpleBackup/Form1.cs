@@ -16,6 +16,7 @@ namespace SimpleBackup
         public Form1()
         {
             InitializeComponent();
+            this.txt_sDir_out.Enabled = false;
         }
 
         private void bnt_sDir_Click(object sender, EventArgs e)
