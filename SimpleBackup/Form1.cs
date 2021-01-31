@@ -26,7 +26,7 @@ namespace SimpleBackup
             {
                autoSelectTarget = MessageBox.Show(
                     "Wir haben erkannt, dass Sie ein Externes Speichermedium angeschlossen haben. \n Möchten Sie dieses automatisch als Speicherort auswählen ?",
-                    "Error", 
+                    "wäschd beschäd", 
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question
                 );
