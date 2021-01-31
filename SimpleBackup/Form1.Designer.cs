@@ -36,8 +36,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.bnt_tDir = new System.Windows.Forms.Button();
             this.txt_tDir_cp = new System.Windows.Forms.TextBox();
+            this.bnt_tDir = new System.Windows.Forms.Button();
             this.bnt_start = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.label2 = new System.Windows.Forms.Label();
@@ -59,6 +59,7 @@
             // bnt_sDir
             // 
             this.bnt_sDir.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.bnt_sDir.ForeColor = System.Drawing.SystemColors.InfoText;
             this.bnt_sDir.Location = new System.Drawing.Point(6, 64);
             this.bnt_sDir.Name = "bnt_sDir";
             this.bnt_sDir.Size = new System.Drawing.Size(75, 20);
@@ -74,6 +75,7 @@
             this.txt_sDir_out.Name = "txt_sDir_out";
             this.txt_sDir_out.Size = new System.Drawing.Size(454, 20);
             this.txt_sDir_out.TabIndex = 2;
+            this.txt_sDir_out.Enabled = false;
             // 
             // label1
             // 
@@ -112,16 +114,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ziel Verzeichnis";
             // 
-            // bnt_tDir
-            // 
-            this.bnt_tDir.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.bnt_tDir.Location = new System.Drawing.Point(9, 71);
-            this.bnt_tDir.Name = "bnt_tDir";
-            this.bnt_tDir.Size = new System.Drawing.Size(72, 20);
-            this.bnt_tDir.TabIndex = 4;
-            this.bnt_tDir.Text = "...";
-            this.bnt_tDir.UseVisualStyleBackColor = true;
-            // 
             // txt_tDir_cp
             // 
             this.txt_tDir_cp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
@@ -129,6 +121,18 @@
             this.txt_tDir_cp.Name = "txt_tDir_cp";
             this.txt_tDir_cp.Size = new System.Drawing.Size(454, 20);
             this.txt_tDir_cp.TabIndex = 5;
+            this.txt_tDir_cp.Enabled = false;
+            // 
+            // bnt_tDir
+            // 
+            this.bnt_tDir.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.bnt_tDir.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.bnt_tDir.Location = new System.Drawing.Point(9, 71);
+            this.bnt_tDir.Name = "bnt_tDir";
+            this.bnt_tDir.Size = new System.Drawing.Size(72, 20);
+            this.bnt_tDir.TabIndex = 4;
+            this.bnt_tDir.Text = "...";
+            this.bnt_tDir.UseVisualStyleBackColor = true;
             // 
             // bnt_start
             // 
