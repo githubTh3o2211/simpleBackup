@@ -70,12 +70,12 @@
             // 
             // txt_sDir_out
             // 
+            this.txt_sDir_out.Enabled = false;
             this.txt_sDir_out.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.txt_sDir_out.Location = new System.Drawing.Point(87, 65);
             this.txt_sDir_out.Name = "txt_sDir_out";
             this.txt_sDir_out.Size = new System.Drawing.Size(454, 20);
             this.txt_sDir_out.TabIndex = 2;
-            this.txt_sDir_out.Enabled = false;
             // 
             // label1
             // 
@@ -116,12 +116,12 @@
             // 
             // txt_tDir_cp
             // 
+            this.txt_tDir_cp.Enabled = false;
             this.txt_tDir_cp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.txt_tDir_cp.Location = new System.Drawing.Point(87, 71);
             this.txt_tDir_cp.Name = "txt_tDir_cp";
             this.txt_tDir_cp.Size = new System.Drawing.Size(454, 20);
             this.txt_tDir_cp.TabIndex = 5;
-            this.txt_tDir_cp.Enabled = false;
             // 
             // bnt_tDir
             // 
@@ -133,6 +133,7 @@
             this.bnt_tDir.TabIndex = 4;
             this.bnt_tDir.Text = "...";
             this.bnt_tDir.UseVisualStyleBackColor = true;
+            this.bnt_tDir.Click += new System.EventHandler(this.bnt_tDir_Click);
             // 
             // bnt_start
             // 

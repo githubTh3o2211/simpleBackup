@@ -29,13 +29,31 @@ namespace SimpleBackup
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
                     sDir = fbd.SelectedPath;
-                    string[] files = Directory.GetFiles(fbd.SelectedPath);
+                    var files = Directory.GetFiles(fbd.SelectedPath);
                     
-
                     // System.Windows.Forms.MessageBox.Show("Files found: " + files.Length.ToString(), "Message");
                 }
                 
                 this.txt_sDir_out.Text = sDir;
+            }
+        }
+
+        private void bnt_tDir_Click(object sender, EventArgs e)
+        {
+            using(var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
+                var tDir = "C:\\";
+                
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    tDir = fbd.SelectedPath;
+                    var files = Directory.GetFiles(fbd.SelectedPath);
+                    
+                    // System.Windows.Forms.MessageBox.Show("Files found: " + files.Length.ToString(), "Message");
+                }
+                
+                this.txt_tDir_cp.Text = tDir;
             }
         }
     }
