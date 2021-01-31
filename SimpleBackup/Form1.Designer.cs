@@ -143,6 +143,7 @@
             this.bnt_start.TabIndex = 6;
             this.bnt_start.Text = "Start";
             this.bnt_start.UseVisualStyleBackColor = true;
+            this.bnt_start.Click += new System.EventHandler(this.bnt_start_Click);
             // 
             // progressBar1
             // 

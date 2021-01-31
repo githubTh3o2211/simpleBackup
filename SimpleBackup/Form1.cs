@@ -56,5 +56,26 @@ namespace SimpleBackup
                 this.txt_tDir_cp.Text = tDir;
             }
         }
+
+        private void bnt_start_Click(object sender, EventArgs e)
+        {
+            var sDir = this.txt_sDir_out.Text;
+            var tDir = this.txt_tDir_cp.Text;
+            
+            this.errorHandler(sDir, tDir);
+
+        }
+
+        private void errorHandler(string sDir, string tDir, string option = "DIR")
+        {
+            if (!Directory.Exists(sDir) || !Directory.Exists(tDir) ) 
+                MessageBox.Show(
+                    "Bitte wählen Sie ein Ziel und Start Verzeichnis aus",
+                    "Error", 
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                 );
+
+        }
     }
 }
