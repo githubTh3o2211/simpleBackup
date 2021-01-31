@@ -47,7 +47,7 @@ namespace SimpleBackup
             using(var fbd = new FolderBrowserDialog())
             {
                 DialogResult result = fbd.ShowDialog();
-                var sDir = "C:\\";
+                var sDir = "";
                 
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
@@ -64,7 +64,7 @@ namespace SimpleBackup
             using(var fbd = new FolderBrowserDialog())
             {
                 DialogResult result = fbd.ShowDialog();
-                var tDir = "C:\\";
+                var tDir = "";
                 
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
