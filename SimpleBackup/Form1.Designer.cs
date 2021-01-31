@@ -1,4 +1,6 @@
-﻿namespace SimpleBackup
+﻿using System.Windows.Forms;
+
+namespace SimpleBackup
 {
     partial class Form1
     {
@@ -44,6 +46,7 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
             // 
             // lbl_explain
             // 

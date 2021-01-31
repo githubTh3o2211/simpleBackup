@@ -132,5 +132,10 @@ namespace SimpleBackup
 
             return isPresent;
         }
+
+        private void createZipFromTarget()
+        {
+            
+        }
     }
 }
