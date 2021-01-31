@@ -4,6 +4,10 @@
         <OutputType>WinExe</OutputType>
         <TargetFramework>net5.0-windows</TargetFramework>
         <UseWindowsForms>true</UseWindowsForms>
+        <Title>Simple Backup</Title>
+        <Authors>jan Theobald</Authors>
+        <Copyright>2021</Copyright>
+        <RepositoryUrl>https://github.com/githubTh3o2211/simpleBackup</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>
