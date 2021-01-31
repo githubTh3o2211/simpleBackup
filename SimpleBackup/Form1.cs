@@ -13,9 +13,12 @@ namespace SimpleBackup
 {
     public partial class Form1 : Form
     {
+        public string[]  externalDiscName; 
+        
         public Form1()
         {
             InitializeComponent();
+            this.checkDrives();
         }
 
         private void bnt_sDir_Click(object sender, EventArgs e)
@@ -68,14 +71,45 @@ namespace SimpleBackup
 
         private void errorHandler(string sDir, string tDir, string option = "DIR")
         {
-            if (!Directory.Exists(sDir) || !Directory.Exists(tDir) ) 
-                MessageBox.Show(
-                    "Bitte wählen Sie ein Ziel und Start Verzeichnis aus",
-                    "Error", 
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                 );
+            switch (option)
+            {
+                case "DIR" :
+                    if (!Directory.Exists(sDir) || !Directory.Exists(tDir) ) 
+                        MessageBox.Show(
+                            "Bitte wählen Sie ein Ziel und Start Verzeichnis aus",
+                            "Error", 
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                    if (sDir == tDir)
+                        MessageBox.Show(
+                            "Ziel und Startverzeichnis dürfen nicht idetisch sein",
+                            "Error", 
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
+                    
+                    break;
+                case "FILE":
+                    break;
+            }
+        }
 
+        private void checkDrives()
+        {
+            DriveInfo[] allDrives = DriveInfo.GetDrives();
+            int i = 0;
+            
+            foreach (DriveInfo d in allDrives)
+            {
+                if (d.DriveType.ToString() == "Removable")
+                {
+                    this.externalDiscName[i] = d.Name;
+                    i++;
+                }
+                
+                Console.WriteLine("Drive {0}, Type {1}", d.Name, d.DriveType);
+            }
         }
     }
 }
