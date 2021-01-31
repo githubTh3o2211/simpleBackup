@@ -13,7 +13,7 @@ namespace SimpleBackup
 {
     public partial class Form1 : Form
     {
-        public string[]  externalDiscName;
+        public string  externalDiscName;
         public bool isExternalDrive;
         public DialogResult autoSelectTarget;
         
@@ -30,6 +30,7 @@ namespace SimpleBackup
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question
                 );
+               txt_tDir_cp.Text = 
             }
             Console.WriteLine("Drive {0}", autoSelectTarget);
             
@@ -110,13 +111,13 @@ namespace SimpleBackup
             DriveInfo[] allDrives = DriveInfo.GetDrives();
             var i = 0;
             var isPresent = false;
-            string[] extDrive = new string[10] ;
+            string extDrive = "" ;
             
             foreach (DriveInfo d in allDrives)
             {
                 if (d.DriveType.ToString() == "Removable")
                 {
-                    extDrive[i] = d.Name;
+                    extDrive = d.Name;
                     isPresent = true;
                     i++;
                 }
