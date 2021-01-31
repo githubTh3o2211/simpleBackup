@@ -41,12 +41,9 @@ namespace SimpleBackup
             this.txt_tDir_cp = new System.Windows.Forms.TextBox();
             this.bnt_tDir = new System.Windows.Forms.Button();
             this.bnt_start = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
             // 
             // lbl_explain
             // 
@@ -148,33 +145,15 @@ namespace SimpleBackup
             this.bnt_start.UseVisualStyleBackColor = true;
             this.bnt_start.Click += new System.EventHandler(this.bnt_start_Click);
             // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(12, 320);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(541, 29);
-            this.progressBar1.TabIndex = 7;
-            // 
-            // label2
-            // 
-            this.label2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(12, 294);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(147, 23);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Backup Fortschritt";
-            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(571, 450);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.bnt_start);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -186,9 +165,6 @@ namespace SimpleBackup
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
         }
-
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ProgressBar progressBar1;
 
         private System.Windows.Forms.Button bnt_start;
 

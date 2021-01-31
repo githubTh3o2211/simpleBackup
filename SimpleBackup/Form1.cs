@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -79,9 +80,12 @@ namespace SimpleBackup
         {
             var sDir = this.txt_sDir_out.Text;
             var tDir = this.txt_tDir_cp.Text;
+            this.bnt_start.Enabled = false;
             
             this.errorHandler(sDir, tDir);
-
+            createZipFromTarget(sDir, tDir);
+            
+            this.bnt_start.Enabled = true;
         }
 
         private void errorHandler(string sDir, string tDir, string option = "DIR")
@@ -133,9 +137,37 @@ namespace SimpleBackup
             return isPresent;
         }
 
-        private void createZipFromTarget()
+        private void createZipFromTarget(string sDir, string tDir)
         {
+            DateTime date       =  DateTime.Now;
             
+            string startPath    = sDir;
+            string zipName      = date.ToString("yyyy-MM-dd") + ".zip";
+            string zipPath      = tDir + "\\" + zipName;
+            string messageBody  = "Backup " + zipName + " wurde erfolgreich unter \n\n" + zipPath + "\n\n" +
+                             "abgelegt. Viel Spaß weiterhin!";
+
+            try
+            {
+                ZipFile.CreateFromDirectory(startPath, zipPath, CompressionLevel.Fastest, true);
+                MessageBox.Show(
+                    messageBody,
+                    "TATATADDDDAAAAAA", 
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+                
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(
+                    e.ToString(),
+                    "WAT DA FACK", 
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                throw;
+            }
         }
     }
 }
