@@ -449,4 +449,8 @@
       <None Remove="Accessibility.dll" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="build" />
+    </ItemGroup>
+
 </Project>
