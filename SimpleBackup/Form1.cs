@@ -52,7 +52,6 @@ namespace SimpleBackup
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
                     sDir = fbd.SelectedPath;
-                    var files = Directory.GetFiles(fbd.SelectedPath);
                 }
                 
                 this.txt_sDir_out.Text = sDir;
@@ -69,7 +68,6 @@ namespace SimpleBackup
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
                     tDir = fbd.SelectedPath;
-                    var files = Directory.GetFiles(fbd.SelectedPath);
                 }
                 
                 this.txt_tDir_cp.Text = tDir;
