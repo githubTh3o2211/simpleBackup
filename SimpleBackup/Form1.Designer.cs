@@ -41,8 +41,12 @@ namespace SimpleBackup
             this.txt_tDir_cp = new System.Windows.Forms.TextBox();
             this.bnt_tDir = new System.Windows.Forms.Button();
             this.bnt_start = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.optionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.einsellungenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbl_explain
@@ -94,7 +98,7 @@ namespace SimpleBackup
             this.groupBox1.Controls.Add(this.bnt_sDir);
             this.groupBox1.Controls.Add(this.txt_sDir_out);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Info;
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(9, 57);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(547, 112);
             this.groupBox1.TabIndex = 4;
@@ -107,7 +111,7 @@ namespace SimpleBackup
             this.groupBox2.Controls.Add(this.bnt_tDir);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.ForeColor = System.Drawing.SystemColors.Info;
-            this.groupBox2.Location = new System.Drawing.Point(12, 147);
+            this.groupBox2.Location = new System.Drawing.Point(12, 190);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(547, 122);
             this.groupBox2.TabIndex = 5;
@@ -145,6 +149,29 @@ namespace SimpleBackup
             this.bnt_start.UseVisualStyleBackColor = true;
             this.bnt_start.Click += new System.EventHandler(this.bnt_start_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.optionToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(571, 24);
+            this.menuStrip1.TabIndex = 7;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // optionToolStripMenuItem
+            // 
+            this.optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {this.einsellungenToolStripMenuItem});
+            this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
+            this.optionToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.optionToolStripMenuItem.Text = "Option";
+            // 
+            // einsellungenToolStripMenuItem
+            // 
+            this.einsellungenToolStripMenuItem.Name = "einsellungenToolStripMenuItem";
+            this.einsellungenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.einsellungenToolStripMenuItem.Text = "Einsellungen";
+            this.einsellungenToolStripMenuItem.Click += new System.EventHandler(this.einsellungenToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -153,8 +180,10 @@ namespace SimpleBackup
             this.Controls.Add(this.bnt_start);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
@@ -163,8 +192,16 @@ namespace SimpleBackup
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
         }
+
+        private System.Windows.Forms.ToolStripMenuItem einsellungenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optionToolStripMenuItem;
+
+        private System.Windows.Forms.MenuStrip menuStrip1;
 
         private System.Windows.Forms.Button bnt_start;
 

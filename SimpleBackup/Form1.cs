@@ -167,5 +167,11 @@ namespace SimpleBackup
                 throw;
             }
         }
+
+        private void einsellungenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            settings Sfrom = new settings();
+            Sfrom.Show();
+        }
     }
 }

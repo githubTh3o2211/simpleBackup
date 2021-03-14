@@ -453,4 +453,10 @@
       <Folder Include="build" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="settings.cs">
+        <SubType>Form</SubType>
+      </Compile>
+    </ItemGroup>
+
 </Project>
