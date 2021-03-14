@@ -18,6 +18,7 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.NETCore.Platforms" Version="5.0.0" />
+      <PackageReference Include="SwiftClient" Version="1.2.2" />
     </ItemGroup>
 
     <ItemGroup>
