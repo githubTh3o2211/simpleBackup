@@ -40,11 +40,15 @@ namespace SimpleBackup
             this.chbox = new System.Windows.Forms.CheckBox();
             this.bntSave = new System.Windows.Forms.Button();
             this.bntClose = new System.Windows.Forms.Button();
+            this.listEndpoints = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.swiftEnable.SuspendLayout();
             this.SuspendLayout();
             // 
             // swiftEnable
             // 
+            this.swiftEnable.Controls.Add(this.label1);
+            this.swiftEnable.Controls.Add(this.listEndpoints);
             this.swiftEnable.Controls.Add(this.txtPassword);
             this.swiftEnable.Controls.Add(this.lblPassword);
             this.swiftEnable.Controls.Add(this.txtUsername);
@@ -95,7 +99,7 @@ namespace SimpleBackup
             // 
             this.chbox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.chbox.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.chbox.Location = new System.Drawing.Point(6, 19);
+            this.chbox.Location = new System.Drawing.Point(6, 29);
             this.chbox.Name = "chbox";
             this.chbox.Size = new System.Drawing.Size(399, 24);
             this.chbox.TabIndex = 0;
@@ -121,6 +125,26 @@ namespace SimpleBackup
             this.bntClose.Text = "Abbrechen";
             this.bntClose.UseVisualStyleBackColor = true;
             // 
+            // listEndpoints
+            // 
+            this.listEndpoints.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.listEndpoints.FormattingEnabled = true;
+            this.listEndpoints.ItemHeight = 15;
+            this.listEndpoints.Location = new System.Drawing.Point(6, 224);
+            this.listEndpoints.Name = "listEndpoints";
+            this.listEndpoints.Size = new System.Drawing.Size(231, 94);
+            this.listEndpoints.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label1.Location = new System.Drawing.Point(6, 198);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 23);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Swift Endpoints";
+            // 
             // settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -139,6 +163,10 @@ namespace SimpleBackup
             this.swiftEnable.PerformLayout();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Label label1;
+
+        private System.Windows.Forms.ListBox listEndpoints;
 
         private System.Windows.Forms.TextBox txtPassword;
 

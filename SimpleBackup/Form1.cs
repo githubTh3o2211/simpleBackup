@@ -14,10 +14,10 @@ namespace SimpleBackup
 {
     public partial class Form1 : Form
     {
-        public string  externalDiscName;
+        public string externalDiscName;
         public bool isExternalDrive;
         public DialogResult autoSelectTarget;
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -25,51 +25,52 @@ namespace SimpleBackup
 
             if (isExternalDrive)
             {
-               autoSelectTarget = MessageBox.Show(
+                autoSelectTarget = MessageBox.Show(
                     "Wir haben erkannt, dass Sie ein Externes Speichermedium angeschlossen haben. \n Möchten Sie dieses automatisch als Speicherort auswählen ?",
-                    "wäschd beschäd", 
+                    "wäschd beschäd",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question
                 );
-               
-               if (autoSelectTarget == DialogResult.Yes)
-                   txt_tDir_cp.Text = externalDiscName;
-               
-               
+
+                if (autoSelectTarget == DialogResult.Yes)
+                    txt_tDir_cp.Text = externalDiscName;
+
+
             }
+
             Console.WriteLine("Drive {0}", autoSelectTarget);
-            
+
         }
 
         private void bnt_sDir_Click(object sender, EventArgs e)
         {
 
-            using(var fbd = new FolderBrowserDialog())
+            using (var fbd = new FolderBrowserDialog())
             {
                 DialogResult result = fbd.ShowDialog();
                 var sDir = "";
-                
+
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
                     sDir = fbd.SelectedPath;
                 }
-                
+
                 this.txt_sDir_out.Text = sDir;
             }
         }
 
         private void bnt_tDir_Click(object sender, EventArgs e)
         {
-            using(var fbd = new FolderBrowserDialog())
+            using (var fbd = new FolderBrowserDialog())
             {
                 DialogResult result = fbd.ShowDialog();
                 var tDir = "";
-                
+
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
                     tDir = fbd.SelectedPath;
                 }
-                
+
                 this.txt_tDir_cp.Text = tDir;
             }
         }
@@ -79,10 +80,10 @@ namespace SimpleBackup
             var sDir = this.txt_sDir_out.Text;
             var tDir = this.txt_tDir_cp.Text;
             this.bnt_start.Enabled = false;
-            
+
             this.errorHandler(sDir, tDir);
             createZipFromTarget(sDir, tDir);
-            
+
             this.bnt_start.Enabled = true;
         }
 
@@ -90,22 +91,22 @@ namespace SimpleBackup
         {
             switch (option)
             {
-                case "DIR" :
-                    if (!Directory.Exists(sDir) || !Directory.Exists(tDir) ) 
+                case "DIR":
+                    if (!Directory.Exists(sDir) || !Directory.Exists(tDir))
                         MessageBox.Show(
                             "Bitte wählen Sie ein Ziel und Start Verzeichnis aus",
-                            "Error", 
+                            "Error",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error
                         );
                     if (sDir == tDir)
                         MessageBox.Show(
                             "Ziel und Startverzeichnis dürfen nicht idetisch sein",
-                            "Error", 
+                            "Error",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error
                         );
-                    
+
                     break;
                 case "FILE":
                     break;
@@ -117,8 +118,8 @@ namespace SimpleBackup
             DriveInfo[] allDrives = DriveInfo.GetDrives();
             var i = 0;
             var isPresent = false;
-            string extDrive = "" ;
-            
+            string extDrive = "";
+
             foreach (DriveInfo d in allDrives)
             {
                 if (d.DriveType.ToString() == "Removable")
@@ -137,30 +138,30 @@ namespace SimpleBackup
 
         private void createZipFromTarget(string sDir, string tDir)
         {
-            DateTime date       =  DateTime.Now;
-            
-            string startPath    = sDir;
-            string zipName      = date.ToString("yyyy-MM-dd") + ".zip";
-            string zipPath      = tDir + "\\" + zipName;
-            string messageBody  = "Backup " + zipName + " wurde erfolgreich unter \n\n" + zipPath + "\n\n" +
-                             "abgelegt. Viel Spaß weiterhin!";
+            DateTime date = DateTime.Now;
+
+            string startPath = sDir;
+            string zipName = date.ToString("yyyy-MM-dd") + ".zip";
+            string zipPath = tDir + "\\" + zipName;
+            string messageBody = "Backup " + zipName + " wurde erfolgreich unter \n\n" + zipPath + "\n\n" +
+                                 "abgelegt. Viel Spaß weiterhin!";
 
             try
             {
                 ZipFile.CreateFromDirectory(startPath, zipPath, CompressionLevel.Fastest, true);
                 MessageBox.Show(
                     messageBody,
-                    "TATATADDDDAAAAAA", 
+                    "TATATADDDDAAAAAA",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
                 );
-                
+
             }
             catch (Exception e)
             {
                 MessageBox.Show(
                     e.ToString(),
-                    "WAT DA FACK", 
+                    "WAT DA FACK",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
                 );
@@ -170,8 +171,32 @@ namespace SimpleBackup
 
         private void einsellungenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            settings Sfrom = new settings();
-            Sfrom.Show();
+
+            var isOpen = this.formOpen("settings");
+            
+            if (!isOpen)
+            {
+                settings Sfrom = new settings();
+                Sfrom.Show();
+            }
+        }
+
+        private bool formOpen(string formName)
+        {
+            var openForms = Application.OpenForms;
+
+            var isOpen = false;
+            foreach (var oForm in openForms)
+            {
+
+                var oFormName = oForm.GetType().Name;
+                if (oFormName == formName )
+                {
+                    isOpen = true;
+                }
+            }
+
+            return isOpen;
         }
     }
 }
