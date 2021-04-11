@@ -29,13 +29,13 @@ namespace SimpleBackup
 
             var swiftBox = uSwiftActive.FirstOrDefault(); 
             
-            this.chbox.Text = "SwiftClient deaktiviert";
-            this.chbox.Checked = swiftBox != "false";
-            this.txtPassword.Enabled = swiftBox != "false";
-            this.txtPassword.Text = uPassword.FirstOrDefault();
-            this.txtUsername.Text = uName.FirstOrDefault();
-            this.txtUsername.Enabled = swiftBox != "false";
-            this.listEndpoints.Enabled = swiftBox != "false";
+            this.chbox.Text             = "SwiftClient deaktiviert";
+            this.chbox.Checked          = swiftBox != "false";
+            this.txtPassword.Enabled    = swiftBox != "false";
+            this.txtPassword.Text       = uPassword.FirstOrDefault();
+            this.txtUsername.Text       = uName.FirstOrDefault();
+            this.txtUsername.Enabled    = swiftBox != "false";
+            this.listEndpoints.Enabled  = swiftBox != "false";
             
             if (listEndpoints.Items.Count <= 0 )
             {
