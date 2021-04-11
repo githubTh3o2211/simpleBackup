@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
@@ -14,15 +16,26 @@ namespace SimpleBackup
         {
             InitializeComponent();
             this.loadXMLconfig();
-            
-            // TODO: This attributes has to load from the settings 
-            
+
+            /*
+             * Get XML values to load into the form 
+             */
+            IEnumerable<string> uPassword    =  from item in uSettings.Descendants("password") 
+                                                select (string) item.Value;
+            IEnumerable<string> uName        = from item in uSettings.Descendants("user")
+                                                select (string) item.Value;
+            IEnumerable<string> uSwiftActive = from item in uSettings.Descendants("swiftEnables")
+                                                select (string) item.Value;
+
+            var swiftBox = uSwiftActive.FirstOrDefault(); 
             
             this.chbox.Text = "SwiftClient deaktiviert";
-            this.txtPassword.Enabled = false;
-            this.txtPassword.Text = uSettings.Element("password").ToString();
-            this.txtUsername.Enabled = false;
-            this.listEndpoints.Enabled = false;
+            this.chbox.Checked = swiftBox != "false";
+            this.txtPassword.Enabled = swiftBox != "false";
+            this.txtPassword.Text = uPassword.FirstOrDefault();
+            this.txtUsername.Text = uName.FirstOrDefault();
+            this.txtUsername.Enabled = swiftBox != "false";
+            this.listEndpoints.Enabled = swiftBox != "false";
             
             if (listEndpoints.Items.Count <= 0 )
             {
