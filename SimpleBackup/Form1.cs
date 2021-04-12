@@ -145,7 +145,10 @@ namespace SimpleBackup
             string zipPath = tDir + "\\" + zipName;
             string messageBody = "Backup " + zipName + " wurde erfolgreich unter \n\n" + zipPath + "\n\n" +
                                  "abgelegt. Viel Spaß weiterhin!";
-
+            settings conf = new settings(true);
+            conf.getXMLsettings();
+            var test = conf.get_uName;
+            Console.WriteLine(conf.get_uName);
             try
             {
                 ZipFile.CreateFromDirectory(startPath, zipPath, CompressionLevel.Fastest, true);

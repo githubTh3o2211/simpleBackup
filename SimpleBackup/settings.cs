@@ -11,46 +11,79 @@ namespace SimpleBackup
     {
         private Label lblUsername;
         private XElement uSettings;
+        public string get_uName;
+        public string get_uPassword;
+        public string get_uSwiftAcitve;
+        public IEnumerable<XElement> get_uEndpoints;
 
-        public settings()
+        public void getXMLsettings()
         {
-            InitializeComponent();
             this.loadXMLconfig();
 
-            /*
-             * Get XML values to load into the form 
-             */
-            IEnumerable<string> uPassword    =  from item in uSettings.Descendants("password") 
-                                                select (string) item.Value;
+            IEnumerable<string> uPassword    =  from item in uSettings.Descendants("password")
+                select (string) item.Value;
             IEnumerable<string> uName        = from item in uSettings.Descendants("user")
-                                                select (string) item.Value;
+                select (string) item.Value;
             IEnumerable<string> uSwiftActive = from item in uSettings.Descendants("swiftEnables")
-                                                select (string) item.Value;
+                select (string) item.Value;
             IEnumerable<XElement> uEndpoints = from item in uSettings.Descendants("point") select item;
 
+            this.get_uPassword  = uPassword.FirstOrDefault();
+            this.get_uName      = uName.FirstOrDefault();
+            this.get_uSwiftAcitve = uSwiftActive.FirstOrDefault();
+            this.get_uEndpoints =  uEndpoints;
+            
+        }
+        
+        public settings(bool eMode=false)
+        {
+            if (!eMode)
+            { 
+                InitializeComponent();
+            
+                this.loadXMLconfig();
 
-            foreach (var e in uEndpoints)
-            {
-                listEndpoints.Items.Add(e.Value);
+                /*
+                 * Get XML values to load into the form 
+                 */
+                IEnumerable<string> uPassword    =  from item in uSettings.Descendants("password") 
+                                                    select (string) item.Value;
+                IEnumerable<string> uName        = from item in uSettings.Descendants("user")
+                                                    select (string) item.Value;
+                IEnumerable<string> uSwiftActive = from item in uSettings.Descendants("swiftEnables")
+                                                    select (string) item.Value;
+                IEnumerable<XElement> uEndpoints = from item in uSettings.Descendants("point") select item;
+
+
+                foreach (var e in uEndpoints)
+                {
+                    listEndpoints.Items.Add(e.Value);
+                }
+                var swiftBox = uSwiftActive.FirstOrDefault();
+                var sBool = swiftBox != "false";
+                
+                /*
+                 * checks if box is check and thrown a waring for user
+                 */
+                this.costAlert(sBool);
+                
+                
+                /*
+                 * Settings form values load from LINQ result
+                 */
+                this.chbox.Text             = sBool ? "SwiftClient aktiviert" : "SwiftClient deaktiviert";
+                this.chbox.Checked          = sBool;
+                this.txtPassword.Enabled    = sBool;
+                this.bntDel.Enabled         = sBool;
+                this.bntAdd.Enabled         = sBool;
+                this.txtPassword.Text       = uPassword.FirstOrDefault();
+                this.txtUsername.Text       = uName.FirstOrDefault();
+                this.txtUsername.Enabled    = sBool;
+                this.listEndpoints.Enabled  = sBool;
+            
             }
-            var swiftBox = uSwiftActive.FirstOrDefault();
-            var sBool = swiftBox != "false";
-            this.costAlert(sBool);
             
-            
-            /*
-             * Settings form values load from LINQ result
-             */
-            this.chbox.Text             = sBool ? "SwiftClient aktiviert" : "SwiftClient deaktiviert";
-            this.chbox.Checked          = sBool;
-            this.txtPassword.Enabled    = sBool;
-            this.bntDel.Enabled         = sBool;
-            this.bntAdd.Enabled         = sBool;
-            this.txtPassword.Text       = uPassword.FirstOrDefault();
-            this.txtUsername.Text       = uName.FirstOrDefault();
-            this.txtUsername.Enabled    = sBool;
-            this.listEndpoints.Enabled  = sBool;
-            
+                
         }
 
         private void loadXMLconfig()
@@ -68,8 +101,6 @@ namespace SimpleBackup
         
         private void createXMLconfig(string configPath)
         {
-            //File.Create(configPath);
-
             XElement configFile = new XElement(
                 "swiftConfig",
                 new XElement("user", "default"),

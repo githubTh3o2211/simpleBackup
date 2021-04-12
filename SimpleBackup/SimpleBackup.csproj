@@ -7,7 +7,7 @@
         <Authors>jan Theobald</Authors>
         <Copyright>2021</Copyright>
         <RepositoryUrl>https://github.com/githubTh3o2211/simpleBackup</RepositoryUrl>
-        <TargetFramework>net5.0-windows7.0</TargetFramework>
+        <TargetFramework>net5.0-windows</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
