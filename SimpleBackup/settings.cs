@@ -26,7 +26,13 @@ namespace SimpleBackup
                                                 select (string) item.Value;
             IEnumerable<string> uSwiftActive = from item in uSettings.Descendants("swiftEnables")
                                                 select (string) item.Value;
+            IEnumerable<XElement> uEndpoints = from item in uSettings.Descendants("point") select item;
 
+
+            foreach (var e in uEndpoints)
+            {
+                listEndpoints.Items.Add(e.Value);
+            }
             var swiftBox = uSwiftActive.FirstOrDefault(); 
             
             this.chbox.Text             = "SwiftClient deaktiviert";
@@ -37,11 +43,6 @@ namespace SimpleBackup
             this.txtUsername.Enabled    = swiftBox != "false";
             this.listEndpoints.Enabled  = swiftBox != "false";
             
-            if (listEndpoints.Items.Count <= 0 )
-            {
-                listEndpoints.Items.Add("none");
-            }
-
         }
 
         private void loadXMLconfig()
@@ -67,7 +68,7 @@ namespace SimpleBackup
                 new XElement("password", "default"),
                 new XElement("swiftEnables", "false"),
                 new XElement("Endpoints",
-                    new XElement("DE", "storage.de1.cloud.ovh.net")
+                    new XElement("point", "storage.de1.cloud.ovh.net")
                     )
             );
             
