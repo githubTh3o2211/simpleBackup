@@ -33,6 +33,8 @@ namespace SimpleBackup
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(settings));
             this.swiftEnable = new System.Windows.Forms.GroupBox();
+            this.bntAdd = new System.Windows.Forms.Button();
+            this.bntDel = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.listEndpoints = new System.Windows.Forms.ListBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -42,8 +44,6 @@ namespace SimpleBackup
             this.chbox = new System.Windows.Forms.CheckBox();
             this.bntSave = new System.Windows.Forms.Button();
             this.bntClose = new System.Windows.Forms.Button();
-            this.bntDel = new System.Windows.Forms.Button();
-            this.bntAdd = new System.Windows.Forms.Button();
             this.swiftEnable.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,6 +64,28 @@ namespace SimpleBackup
             this.swiftEnable.TabIndex = 0;
             this.swiftEnable.TabStop = false;
             this.swiftEnable.Text = "SwiftClient Konfiguration";
+            // 
+            // bntAdd
+            // 
+            this.bntAdd.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.bntAdd.ForeColor = System.Drawing.Color.OliveDrab;
+            this.bntAdd.Location = new System.Drawing.Point(243, 252);
+            this.bntAdd.Name = "bntAdd";
+            this.bntAdd.Size = new System.Drawing.Size(53, 22);
+            this.bntAdd.TabIndex = 8;
+            this.bntAdd.Text = "+";
+            this.bntAdd.UseVisualStyleBackColor = true;
+            // 
+            // bntDel
+            // 
+            this.bntDel.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.bntDel.ForeColor = System.Drawing.Color.Red;
+            this.bntDel.Location = new System.Drawing.Point(243, 224);
+            this.bntDel.Name = "bntDel";
+            this.bntDel.Size = new System.Drawing.Size(53, 22);
+            this.bntDel.TabIndex = 7;
+            this.bntDel.Text = "-";
+            this.bntDel.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -149,32 +171,9 @@ namespace SimpleBackup
             this.bntClose.Text = "Abbrechen";
             this.bntClose.UseVisualStyleBackColor = true;
             // 
-            // bntDel
-            // 
-            this.bntDel.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.bntDel.ForeColor = System.Drawing.Color.Red;
-            this.bntDel.Location = new System.Drawing.Point(243, 224);
-            this.bntDel.Name = "bntDel";
-            this.bntDel.Size = new System.Drawing.Size(53, 22);
-            this.bntDel.TabIndex = 7;
-            this.bntDel.Text = "-";
-            this.bntDel.UseVisualStyleBackColor = true;
-            // 
-            // bntAdd
-            // 
-            this.bntAdd.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.bntAdd.ForeColor = System.Drawing.Color.OliveDrab;
-            this.bntAdd.Location = new System.Drawing.Point(243, 252);
-            this.bntAdd.Name = "bntAdd";
-            this.bntAdd.Size = new System.Drawing.Size(53, 22);
-            this.bntAdd.TabIndex = 8;
-            this.bntAdd.Text = "+";
-            this.bntAdd.UseVisualStyleBackColor = true;
-            // 
             // settings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(435, 437);
             this.Controls.Add(this.bntClose);

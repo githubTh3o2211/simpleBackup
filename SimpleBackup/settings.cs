@@ -33,15 +33,23 @@ namespace SimpleBackup
             {
                 listEndpoints.Items.Add(e.Value);
             }
-            var swiftBox = uSwiftActive.FirstOrDefault(); 
+            var swiftBox = uSwiftActive.FirstOrDefault();
+            var sBool = swiftBox != "false";
+            this.costAlert(sBool);
             
-            this.chbox.Text             = "SwiftClient deaktiviert";
-            this.chbox.Checked          = swiftBox != "false";
-            this.txtPassword.Enabled    = swiftBox != "false";
+            
+            /*
+             * Settings form values load from LINQ result
+             */
+            this.chbox.Text             = sBool ? "SwiftClient aktiviert" : "SwiftClient deaktiviert";
+            this.chbox.Checked          = sBool;
+            this.txtPassword.Enabled    = sBool;
+            this.bntDel.Enabled         = sBool;
+            this.bntAdd.Enabled         = sBool;
             this.txtPassword.Text       = uPassword.FirstOrDefault();
             this.txtUsername.Text       = uName.FirstOrDefault();
-            this.txtUsername.Enabled    = swiftBox != "false";
-            this.listEndpoints.Enabled  = swiftBox != "false";
+            this.txtUsername.Enabled    = sBool;
+            this.listEndpoints.Enabled  = sBool;
             
         }
 
@@ -80,15 +88,35 @@ namespace SimpleBackup
             var chStatus = this.chbox.Checked;
             var txtPassStatus = this.txtPassword.Enabled;
             var txtUserStatus = this.txtUsername.Enabled;
+
+            this.costAlert(chStatus);
             
-            this.chbox.Text = chStatus == true ? "SwiftClient aktiviert" : "SwirftClient deaktiviert";
-            
-            this.txtPassword.Enabled = chStatus == true ? true : false;
-            this.txtUsername.Enabled = chStatus == true ? true : false;
-            this.listEndpoints.Enabled = chStatus == true ? true : false;
+            this.chbox.Text = chStatus == true ? "SwiftClient aktiviert" : "SwiftClient deaktiviert";
+
+            this.txtPassword.Enabled    = chStatus;
+            this.txtUsername.Enabled    = chStatus;
+            this.listEndpoints.Enabled  = chStatus;
+            this.bntAdd.Enabled         = chStatus;
+            this.bntDel.Enabled         = chStatus;
             
 
 
+        }
+
+        public void costAlert(bool chBox)
+        {
+            if (chBox)
+            {
+                string messageBody = "Bitte beachten Sie, dass beim aktivieren dieser option zusätzliche Kosten beim  " + 
+                                     "Storageanbieter entstehenentstehen!";
+                
+                MessageBox.Show(
+                    messageBody,
+                    "Warnung",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+            }
         }
     }
 }
